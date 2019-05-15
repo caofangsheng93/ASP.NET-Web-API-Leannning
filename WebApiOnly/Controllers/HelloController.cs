@@ -32,7 +32,7 @@ namespace WebApiOnly.Controllers
         [HttpGet]
         public string SayHi(string name)
         {
-            return "你好哦:" + name;
+            return "你好哦:" + name; 
         }
 
         public string Get()
