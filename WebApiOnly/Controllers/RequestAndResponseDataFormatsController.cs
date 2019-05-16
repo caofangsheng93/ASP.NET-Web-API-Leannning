@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApiOnly.Models;
 
 namespace WebApiOnly.Controllers
 {
@@ -22,5 +23,20 @@ namespace WebApiOnly.Controllers
     public class RequestAndResponseDataFormatsController : ApiController
     {
 
+        private List<Student> lstModel = new List<Student>();
+
+        public RequestAndResponseDataFormatsController()
+        {
+            lstModel.Add(new Student() { ID = 1, Name = "曹雪芹", Sex = "女" });
+            lstModel.Add(new Student() { ID = 2, Name = "刘备", Sex = "男" });
+            lstModel.Add(new Student() { ID = 3, Name = "白骨精", Sex = "女" });
+            lstModel.Add(new Student() { ID = 4, Name = "孙权", Sex = "男" });
+        }
+
+        public Student GetStudentById(int id)
+        {
+           Student stu= lstModel.Find(s => s.ID == id);
+            return stu;
+        }
     }
 }
