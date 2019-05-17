@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.Routing;
 
@@ -32,7 +34,12 @@ namespace WebApiOnly
             IHttpRoute route2 = config.Routes.CreateRoute("WebApi/{controller}", defaults: new { controller = "Hello" }, constraints: null);
             config.Routes.Add("MyWebApi2", route2);
 
-        
+
+            //配置JSON的格式化程序
+            //{"id":4,"name":"曹雪芹","sex":"女"}
+            JsonMediaTypeFormatter jsonFormatter = config.Formatters.JsonFormatter;
+            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
 
             //默认路由【搞一个api前缀是为了和ASP.NET MVC路由区分开】
             //config.Routes.MapHttpRoute(
