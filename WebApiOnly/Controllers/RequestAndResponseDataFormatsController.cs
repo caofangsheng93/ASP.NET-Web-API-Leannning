@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApiOnly.Models;
 
 namespace WebApiOnly.Controllers
 {
@@ -21,6 +22,20 @@ namespace WebApiOnly.Controllers
     ///如果想要发送的请求是xml格式的，就使用Content-Type:text/xml,然后在request body中写要发送到服务器的XML格式的对象信息；
     public class RequestAndResponseDataFormatsController : ApiController
     {
+        private List<Student> students = new List<Student>();
 
+        public RequestAndResponseDataFormatsController()
+        {
+            students.Add(new Student() { ID = 1, Name = "曹操", Sex = "男" });
+            students.Add(new Student() { ID = 2, Name = "刘备", Sex = "男" });
+            students.Add(new Student() { ID = 3, Name = "孙权", Sex = "男" });
+        }
+
+        public Student GetStudentByID(int id)
+        {
+           Student stu= students.Find(s => s.ID == id);
+            return stu;
+        }
+        
     }
 }
