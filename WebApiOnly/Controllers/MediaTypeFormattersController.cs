@@ -25,7 +25,7 @@ namespace WebApiOnly.Controllers
     /// 此外JsonMediaTypeFormatter，在内部是使用第三方的开源类库JSON.NET来处理序列化；
     /// 6.配置JSON的序列化：在WebApiConfig类中进行配置，JsonMediaTypeFormatter类包含很多属性和方法，
     /// 你可以用来自定义配置JSON的序列化，例如：Web APi默认是以PascalCase命名法来输出JSON属性，
-    /// 可以使用CamelCasePropertyNamesContractResolver 来使用camelCase命名法。
+    /// 可以使用CamelCasePropertyNamesContractResolver 来使用camelCase命名法。   
     /// 
     /// 
     /// </summary>
