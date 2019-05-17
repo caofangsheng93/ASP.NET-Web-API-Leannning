@@ -36,7 +36,7 @@ namespace WebApiOnly.Controllers
         public Student GetStudentById(int id)
         {
            Student stu= lstModel.Find(s => s.ID == id);
-            return stu;
+           return stu;
         }
     }
 }

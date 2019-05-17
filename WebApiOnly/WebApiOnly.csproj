@@ -84,6 +84,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MediaTypeFormattersController.cs" />
     <Compile Include="Controllers\MyController.cs" />
     <Compile Include="Controllers\RequestAndResponseDataFormatsController.cs" />
     <Compile Include="Global.asax.cs">
