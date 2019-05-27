@@ -257,9 +257,66 @@ namespace WebAPIForCURD.Controllers
 
             return NotFound();
         }
-        #endregion 
+        #endregion
 
         #endregion
+
+
+        #region Put类型的方法
+
+        /// <summary>
+        /// 修改数据
+        /// </summary>
+        /// <param name="student"></param>
+        /// <returns></returns>
+        public IHttpActionResult PutStudent(StudentViewModel student)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Not a valid model");
+            }
+            using (var db = new EFDemoDBEntities())
+            {
+                var existingStudent = db.Students.Where(s => s.ID == student.ID).FirstOrDefault<Student>();
+                if (existingStudent != null)
+                {
+                    existingStudent.Name = student.Name;
+                    existingStudent.Sex = student.Sex;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            return Ok();
+        }
+
+        #endregion
+
+        #region Delete类型的方法
+
+        public IHttpActionResult DeleteStudent(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest("Not a valid student id");
+            }
+            using (var db = new EFDemoDBEntities())
+            {
+                var student = db.Students.Where(s => s.ID == id).FirstOrDefault();
+                if (student == null)
+                {
+                    return NotFound();
+                }
+                db.Entry(student).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+            }
+            return Ok();
+        }
+
+        #endregion
+
 
     }
 }
