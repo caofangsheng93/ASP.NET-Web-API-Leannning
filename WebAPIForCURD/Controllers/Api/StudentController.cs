@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using WebAPIForCURD.Models;
 
-namespace WebAPIForCURD.Controllers
+namespace WebAPIForCURD.Controllers.Api
 {
     /// <summary>
     /// Web API 增删查改
