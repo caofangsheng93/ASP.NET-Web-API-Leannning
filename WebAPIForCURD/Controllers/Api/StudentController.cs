@@ -245,7 +245,8 @@ namespace WebAPIForCURD.Controllers.Api
                         Name = student.Name,
                         Sex = student.Sex,
                         Age = student.Age,
-                        Grade = db.Grades.Where(s => s.GradeID == student.Grade.GradeID).FirstOrDefault()
+                        Grade =null
+                        //db.Grades.Where(s => s.GradeID == student.Grade.GradeID).FirstOrDefault()
                         //{ GradeID = student.Grade.GradeID, GradeName = student.Grade.GradeName }//这样写就会新增一个班级
                     });
                     db.SaveChanges();

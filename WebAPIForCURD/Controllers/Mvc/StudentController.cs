@@ -40,9 +40,46 @@ namespace WebAPIForCURD.Controllers.Mvc
                     students = Enumerable.Empty<StudentViewModel>();
                     ModelState.AddModelError(string.Empty, "系统错误请联系管理员！");
                 }
-
             }
             return View(students);
+        }
+
+        public ActionResult Create()
+        {
+            //List<SelectListItem> list = new List<SelectListItem>();
+            //using (var db = new EFDemoDBEntities())
+            //{
+            //    var grades = db.Grades.Select(s => new { s.GradeID, s.GradeName }).ToList();
+            //    if (grades != null)
+            //    {
+            //        grades.ForEach(s => list.Add(new SelectListItem() { Value = s.GradeID.ToString(), Text = s.GradeName }));
+            //    }
+            //}
+            //ViewBag.GradeList = list;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(StudentViewModel student)
+        {
+            /*
+             1.实例化HttpClient[设置要请求的URI]
+
+             */
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:57991/api/Student/");
+                //Http Post
+                var postTask = client.PostAsJsonAsync<StudentViewModel>("student", student);
+                postTask.Wait();//等待执行结束
+                var result = postTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            ModelState.AddModelError(string.Empty, "系统错误请联系管理员!");
+            return View(student);
         }
     }
 }
