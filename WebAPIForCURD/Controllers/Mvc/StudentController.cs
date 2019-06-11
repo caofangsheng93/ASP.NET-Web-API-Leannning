@@ -44,6 +44,8 @@ namespace WebAPIForCURD.Controllers.Mvc
             return View(students);
         }
 
+        #region Create
+
         public ActionResult Create()
         {
             //List<SelectListItem> list = new List<SelectListItem>();
@@ -81,5 +83,67 @@ namespace WebAPIForCURD.Controllers.Mvc
             ModelState.AddModelError(string.Empty, "系统错误请联系管理员!");
             return View(student);
         }
+
+        #endregion
+
+        #region Edit
+
+        public ActionResult Edit(int id)
+        {
+            StudentViewModel student = null;
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:57991/api/");
+                //Http get
+                var resposeTask = client.GetAsync("student?id=" + id.ToString());
+                resposeTask.Wait();
+                var result = resposeTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<StudentViewModel>();
+                    readTask.Wait();
+                    student = readTask.Result;
+                }
+            }
+            return View(student);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(StudentViewModel student)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:57991/api/Student");
+                //put请求
+                var putTask = client.PutAsJsonAsync<StudentViewModel>("student", student);
+                putTask.Wait();
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+                return View(student);
+            }
+        }
+        #endregion
+
+        public ActionResult Delete(int id)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:57991/api/");
+
+                //http delete
+                var deleteTask = client.DeleteAsync("student/" + id.ToString());
+                deleteTask.Wait();
+                var result = deleteTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+                return RedirectToAction("Index");
+            }
+        }
+
     }
 }

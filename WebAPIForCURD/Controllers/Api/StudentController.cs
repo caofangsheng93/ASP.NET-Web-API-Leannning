@@ -283,6 +283,7 @@ namespace WebAPIForCURD.Controllers.Api
                 {
                     existingStudent.Name = student.Name;
                     existingStudent.Sex = student.Sex;
+                    existingStudent.Age = student.Age;
                     db.SaveChanges();
                 }
                 else
