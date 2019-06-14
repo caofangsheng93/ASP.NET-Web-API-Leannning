@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIForCURD", "WebAPIForC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjectWithWebApi", "DependencyInjectWithWebApi\DependencyInjectWithWebApi.csproj", "{12806A85-0F14-43D5-8AA2-2FCB860E2DB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPISelfHosting", "WebAPISelfHosting\WebAPISelfHosting.csproj", "{0D8B3924-4E28-47B9-AFF3-CFC256B9C80A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{12806A85-0F14-43D5-8AA2-2FCB860E2DB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12806A85-0F14-43D5-8AA2-2FCB860E2DB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12806A85-0F14-43D5-8AA2-2FCB860E2DB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D8B3924-4E28-47B9-AFF3-CFC256B9C80A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D8B3924-4E28-47B9-AFF3-CFC256B9C80A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D8B3924-4E28-47B9-AFF3-CFC256B9C80A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D8B3924-4E28-47B9-AFF3-CFC256B9C80A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
